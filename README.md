@@ -5,7 +5,7 @@ ___
 
 ## Vision
 
-TThe vision for this project is to allow users to request rides, drivers to accept those ride requests and complete a ride share.
+The vision for this project is to allow users to request rides, drivers to accept those ride requests and complete a ride share.
 
 Users in need of transportation can utilize this app to go to different destinations.
 
@@ -13,28 +13,31 @@ This solves the issue of having to worry about getting from point A to point B. 
 
 ___
 
-## Scope (In/Out)
+## Requirements
+
+### Scope
 
 ***IN SCOPE- What will REBU do?***
 
 - Allow users to request to be picked up from a location.
-- Will allow drivers to accept and complete rides.
-- Will allow user authentication via sign-up or sign-in.
-- Will allow users to sign up as a Rider or Driver.
+- Allow drivers to accept and complete rides.
+- Allow user authentication via sign-up or sign-in.
+- Allow users to sign up as a Rider or Driver.
 
-***OUT OF SCOPE- What will your product not do?***
+***OUT OF SCOPE- What will REBU not do?***
 
 - Will not be a food delivery application.
-- Will not 
+- Will not take actual credit card data.
+- Will not allow users to see active drivers on a map.
 
 ### Minimum Viable Product
 
 - Authorize sign-up/sign-in for Rider, Driver and Admin
-- Riders can equest a pickup
-- Driver has the ability to pull ride requests from the queue
-- Ride complete button(function)
-- Admin log-in : to review requested/completed rides(log)
-- Database- completed ride logged && rider requests
+- Riders can equest a pickup and specify the start and end locations
+- Driver has the ability to accept ride requests from the queue
+- Driver can send notifications to rider when ride is accepted, when driver has arrived to start location and when ride is complete
+- Admin can log-in to review requested/completed rides(log)
+- Database - completed ride logged && rider requests
 
 ### Stretch Goals
 
@@ -42,14 +45,14 @@ ___
 - Schedule return pick-up
 - Time travel ride share
 - Admin Dashboard w/ trip details
-- Ride history
+- Display ride history for riders
 - Live map integration
 
 ### Non-Functional Requirements
 
-- Usability: Our app makes it simple for a user to request a ride after either creating a new account or logging into an exising account. The simple interface allows the user to request a ride with minimal options as to cut out the confusion of ride requests. The user also have clearly labeled buttons for login, log out and ride requesting.
+- Usability: Our app makes it simple for a user to request a ride after either creating a new account or logging into an existing account. The simple interface allows the user to request a ride with minimal options as to cut out the confusion of ride requests. The user also have clearly labeled buttons for login, log out and ride requesting.
 
-- Reliability: The app ensure that the user has a mode of transportion, with drivers availiable for rides 24/7. The will undergo testing to ensure it maintians its functinality. To miniize any downtime that user may experience the app will hae regular updates to patch in break in database or server communication.
+- Reliability: The app ensure that the user has a mode of transportation, with drivers available for rides 24/7. The will undergo testing to ensure it maintains its functionality. To minimize any downtime that user may experience the app will hae regular updates to patch in break in database or server communication.
 
 ___
 
