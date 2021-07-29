@@ -1,92 +1,87 @@
-import React, { useState, useContext } from 'react';
-import { View, Text, TextInput, StyleSheet, Alert, Switch, TouchableOpacity } from 'react-native';
-import { Link, Redirect } from 'react-router-native';
-import axios from 'axios';
-import { SiteContext } from './context.js';
-
+import React, { useState, useContext } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Alert,
+  Switch,
+  TouchableOpacity,
+} from "react-native";
+import { Link, Redirect } from "react-router-native";
+import axios from "axios";
+import { SiteContext } from "./context.js";
 
 export default function SignIn() {
   const context = useContext(SiteContext);
-
-  // const [user, setUser] = useState({username: null, password: null, role: 'rider'});
-  // const [role, setRole] = useState('rider');
   const [isEnabled, setIsEnabled] = useState(false);
   const [success, setSuccess] = useState(false);
-
-
 
   let handleUserName = (e, name) => {
     console.log("this is the event", name);
     context.setUser({ ...context.user, username: e });
     console.log(context.user);
-  }
+  };
 
   let handlePassword = (e, name) => {
     console.log("this is the event", name);
     context.setUser({ ...context.user, password: e });
     console.log(context.user);
-  }
+  };
 
   let handleRole = (e, name) => {
     console.log("this is the event", name);
     context.setUser({ ...context.user, role: e });
     console.log(context.user);
-  }
+  };
 
   const handleSubmit = async () => {
-    const api = 'https://brsmith-auth-api.herokuapp.com/signup';
-    // const api = 'http://localhost:3333/signup';
+    const api = "https://brsmith-auth-api.herokuapp.com/signup";
     await axios({
-      method: 'post',
+      method: "post",
       url: api,
-      mode: 'cors',
-      cache: 'no-cache',
-      headers: { 'Content-Type': 'application/json' },
+      mode: "cors",
+      cache: "no-cache",
+      headers: { "Content-Type": "application/json" },
       data: context.user,
-    }).then(response => {
+    }).then((response) => {
       context.setToken(response.data.token);
 
       if (response.status === 201) {
-        console.log('response.data.user!!!!!!!', response.data.user);
+        console.log("response.data.user!!!!!!!", response.data.user);
         context.setUser(response.data.user);
         setSuccess(true);
         createTwoButtonAlert();
       }
       if (response.status === 500) {
-        Alert.alert(
-          "Error",
-          "Please choose another username.", [{ text: "OK" }]
-        )
+        Alert.alert("Error", "Please choose another username.", [
+          { text: "OK" },
+        ]);
       }
-    })
-  }
+    });
+  };
 
   const createTwoButtonAlert = () =>
     Alert.alert(
       "Success!",
       "Your user has been created. Please sign in to access the site",
-      [
-        { text: "OK", onPress: () => console.log('OK') }
-      ]
+      [{ text: "OK", onPress: () => console.log("OK") }]
     );
 
   const toggleSwitch = () => {
-    if (context.user.role === 'driver') {
-      // setRole('rider');
-      handleRole('rider', 'role');
+    if (context.user.role === "driver") {
+      handleRole("rider", "role");
       setIsEnabled(false);
     } else {
-      // setRole('driver');
-      handleRole('driver', 'role');
+      handleRole("driver", "role");
       setIsEnabled(true);
-    };
-  }
+    }
+  };
 
   return (
     <View style={styles.container}>
-      {/* <Text>Sign up</Text> */}
       <View style={styles.roleSwitch}>
-        <Text style={styles.switchText} >Rider</Text>
+        <Text style={styles.switchText}>Rider</Text>
         <Switch
           style={styles.switch}
           trackColor={{ false: "#fff", true: "#3e3e3e" }}
@@ -99,49 +94,58 @@ export default function SignIn() {
       </View>
       <TextInput
         style={styles.input}
-        textContentType='username'
-        onChangeText={(e) => handleUserName(e, 'username')}
-        placeholder='Username'
+        textContentType="username"
+        onChangeText={(e) => handleUserName(e, "username")}
+        placeholder="Username"
         autoCapitalize="none"
       />
 
       <TextInput
         style={styles.input}
-        textContentType='password'
-        onChangeText={(e) => handlePassword(e, 'password')}
-        placeholder='Password'
+        textContentType="password"
+        onChangeText={(e) => handlePassword(e, "password")}
+        placeholder="Password"
         autoCapitalize="none"
       />
 
       <TouchableOpacity
         style={styles.button}
         onPress={handleSubmit}
-        title='Sign Up'>
-        <Text style={{color: "#00a88a", fontSize: 16}}>Sign up</Text>
+        title="Sign Up"
+      >
+        <Text style={{ color: "#00a88a", fontSize: 16 }}>Sign up</Text>
       </TouchableOpacity>
       <Text style={styles.text}>Already Signed up?</Text>
       <Link style={styles.link} to={"/signin"}>
-        <Text style={styles.text, {textDecorationLine: "underline", textAlign: "center", color: "white"}}>Go To Sign In</Text>
+        <Text
+          style={
+            (styles.text,
+            {
+              textDecorationLine: "underline",
+              textAlign: "center",
+              color: "white",
+            })
+          }
+        >
+          Go To Sign In
+        </Text>
       </Link>
-      {success ?
+      {success ? (
         <Redirect
           to={{
             pathname: "/signin",
-            // state: { from: props.location }
           }}
         />
-        : null}
+      ) : null}
     </View>
-
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  container: {
-  },
+  container: {},
   roleSwitch: {
     justifyContent: "center",
-    flexDirection: "row"
+    flexDirection: "row",
   },
   input: {
     color: "black",
@@ -153,19 +157,16 @@ const styles = StyleSheet.create({
     height: 40,
     margin: "auto",
     marginBottom: 20,
-    borderColor: '#7a42f4',
+    borderColor: "#7a42f4",
   },
   link: {
     padding: 10,
-    // borderWidth: 2,
-    // borderColor: "black",
     marginBottom: 10,
     borderRadius: 5,
-    textAlign: 'center',
-    // marginTop: 100,
+    textAlign: "center",
   },
   text: {
-    textAlign: 'center',
+    textAlign: "center",
   },
   button: {
     padding: 10,
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
   switch: {
     marginBottom: 40,
   },
-  roleSwitch : {
+  roleSwitch: {
     flexDirection: "row",
     justifyContent: "space-around",
   },
@@ -186,5 +187,5 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     fontWeight: "500",
-  }
+  },
 });

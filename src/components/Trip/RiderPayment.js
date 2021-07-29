@@ -5,17 +5,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
-  Image,
-  View,
 } from "react-native";
-import { Link } from 'react-router-native';
-import {
-  CreditCardInput,
-  LiteCreditCardInput,
-} from "react-native-credit-card-input";
-import exit from '../../../assets/exit.png';
-import profile from '../../../assets/profile.png';
-
+import { CreditCardInput } from "react-native-credit-card-input";
 
 class RiderPayment extends Component {
   constructor(props) {
@@ -77,24 +68,16 @@ class RiderPayment extends Component {
 
   render() {
     return (
-
       <ScrollView>
         <Text style={styles.titleStyle}>Add a new credit card</Text>
         <CreditCardInput onChange={this.handleOnChange} />
-
         <TouchableOpacity
           style={styles.buttonStyle}
           onPress={this.handleSubmit}
         >
           <Text style={styles.buttonText}>Save Card</Text>
         </TouchableOpacity>
-
-        {/* <Link to={"/"}>
-          <Text style={styles.buttonText}>Home</Text>
-        </Link> */}
       </ScrollView>
-
-
     );
   }
 }

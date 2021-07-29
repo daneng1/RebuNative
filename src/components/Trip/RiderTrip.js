@@ -10,34 +10,28 @@ import exit from "../../../assets/exit.png";
 export default function RiderTrip() {
   const context = useContext(SiteContext);
 
-  // query the db for updates to the trip data
   let update = async () => {
     const api = `https://brsmith-auth-api.herokuapp.com/api/v1/trips/${context.trip._id}`;
-    // const api = `http://localhost:3333/api/v1/trips/${context.trip._id}`;
     await axios({
       method: "get",
       url: api,
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
+        context.setTrip(response.data);
+        console.log("this is the response", response.data);
+      })
+      .catch((e) => console.error(e));
+  };
 
-      headers: { 'Content-Type': 'application/json' },
-    }).then(response => {
-      context.setTrip(response.data);
-      console.log('this is the response', response.data);
-    }).catch(e => console.error(e))
-  }
-
-
-  // While on trip page, query DB every 5 sec for trip updates
   useEffect(() => {
     const updater = setInterval(() => {
       update();
     }, 5000);
-
-    // clear interval when component unmounts (!)
     return () => clearInterval(updater);
   });
 
-  // below are props for Map component: 
-  console.log('line 39', context.trip);
+  console.log("line 39", context.trip);
   const origin = context.trip.start_loc ? context.trip.start_loc : {};
   const destination = context.trip.end_loc ? context.trip.end_loc : {};
 
@@ -63,9 +57,6 @@ export default function RiderTrip() {
           <Link to={"/"}>
             <Text> {">"} go Home</Text>
           </Link>
-          // <Redirect to={{
-          //   pathname: '/'
-          // }} />
         ) : null}
       </View>
       <Text style={styles.logo}>Current Trip</Text>
@@ -79,7 +70,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#00a88a",
     alignItems: "center",
-    // justifyContent: "center",
     width: "100%",
     padding: 10,
   },

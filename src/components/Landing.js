@@ -13,12 +13,11 @@ if (!global.atob) {
 }
 
 export default function Landing() {
-
   const context = useContext(SiteContext);
   const [redirect, setRedirect] = useState(false);
 
   const signOut = () => {
-    context.setUser({ username: null, password: null, role: 'rider' });
+    context.setUser({ username: null, password: null, role: "rider" });
     context.setRole(null);
     context.setTrip(null);
     context.setOrigin(null);
@@ -26,16 +25,16 @@ export default function Landing() {
     context.setIsAuthenticated(false);
     context.setToken(null);
     context.setComplete(false);
-    console.log('logged out', context);
-  }
+    console.log("logged out", context);
+  };
 
   const newTrip = () => {
     context.setTrip(null);
     context.setOrigin(null);
     context.setDestination(null);
-    console.log('logged out', context);
+    console.log("logged out", context);
     setRedirect(true);
-  }
+  };
 
   return (
     <AuthContext>
@@ -63,13 +62,13 @@ export default function Landing() {
             <Link style={styles.link} onPress={signOut}>
               <Text style={styles.text}>Sign Out</Text>
             </Link>
-            {redirect ?
+            {redirect ? (
               <Redirect
                 to={{
                   pathname: "/dashboard",
                 }}
               />
-              : null}
+            ) : null}
           </View>
         )}
       </View>
@@ -100,6 +99,5 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#00a88a",
-  }
-
+  },
 });

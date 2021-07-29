@@ -1,21 +1,26 @@
-import React from 'react';
-import {Text, StyleSheet, View, ScrollView, Button, TextInput, Image, TouchableOpacity} from 'react-native';
-import { Link } from 'react-router-native';
-import back from '../../../assets/back.png';
-
+import React from "react";
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  TextInput,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import { Link } from "react-router-native";
+import back from "../../../assets/back.png";
 
 export default function Profile() {
   return (
     <ScrollView>
       <Link to={"/dashboard"}>
-          <Image 
-          style={styles.exitImg}
-          source={back} />
-        </Link>
-        <View>
+        <Image style={styles.exitImg} source={back} />
+      </Link>
+      <View>
         <Text style={styles.formLabel}>Settings</Text>
-        </View>
-        <View>
+      </View>
+      <View>
         <TextInput placeholder="Username" style={styles.inputStyle} />
         <TextInput
           secureTextEntry={true}
@@ -33,33 +38,30 @@ export default function Profile() {
           style={styles.inputStyle}
         />
         <TouchableOpacity style={styles.buttonStyle}>
-            <Text style={styles.buttonText}>
-              Save Changes
-            </Text>
-         </TouchableOpacity>
+          <Text style={styles.buttonText}>Save Changes</Text>
+        </TouchableOpacity>
       </View>
       <Link to={"/payment"} style={styles.buttonStyle}>
-          <Text style={styles.buttonText}>Add a payment</Text>
+        <Text style={styles.buttonText}>Add a payment</Text>
       </Link>
     </ScrollView>
-
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
     height: 50,
   },
 
   formLabel: {
     fontSize: 20,
-    color: '#fff',
+    color: "#fff",
     alignSelf: "center",
-    marginTop: 30
+    marginTop: 30,
   },
   inputStyle: {
     marginTop: 20,
@@ -67,32 +69,32 @@ const styles = StyleSheet.create({
     height: 40,
     paddingHorizontal: 10,
     borderRadius: 50,
-    backgroundColor: '#DCDCDC',
+    backgroundColor: "#DCDCDC",
   },
   formText: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#fff',
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#fff",
     fontSize: 20,
   },
   text: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 20,
   },
   buttonStyle: {
     marginTop: 30,
-    marginLeft : "20%",
+    marginLeft: "20%",
     height: 45,
-    width : "50%",
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "50%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 30,
     backgroundColor: "#FFFFFF",
-    color: "#00a88a"
-},
-buttonText:{
-  color: '#00a88a',
-  fontWeight: "600"
-},
+    color: "#00a88a",
+  },
+  buttonText: {
+    color: "#00a88a",
+    fontWeight: "600",
+  },
 });

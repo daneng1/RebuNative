@@ -11,11 +11,10 @@ import { Link, Redirect } from "react-router-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { SiteContext } from "../Auth/context";
 import axios from "axios";
-import exit from '../../../assets/exit.png';
-import profile from '../../../assets/profile.png';
+import exit from "../../../assets/exit.png";
+import profile from "../../../assets/profile.png";
 
 export default function RiderDash(props) {
-  // Set global context with form data TODO: user sessions
   const context = useContext(SiteContext);
 
   const DATA = [
@@ -40,7 +39,6 @@ export default function RiderDash(props) {
   const addTrip = async () => {
     console.log("user id", context.user._id);
     const api = "https://brsmith-auth-api.herokuapp.com/api/v1/trips";
-    // const api = 'http://localhost:3333/api/v1/trips';
     await axios({
       method: "post",
       url: api,
@@ -67,7 +65,6 @@ export default function RiderDash(props) {
 
   return (
     <View style={styles.wrapContainer}>
-      {/* <View style={styles.inputContainer}> */}
       <Text style={styles.formLabel}>Rider Dashboard</Text>
       <GooglePlacesAutocomplete
         style={styles.input}
@@ -128,15 +125,10 @@ const styles = StyleSheet.create({
     marginTop: 100,
     flex: 1,
     backgroundColor: "#00a88a",
-    // alignItems: 'center',
     justifyContent: "center",
-    // width: "100%",
   },
   inputContainer: {
     flexDirection: "column",
-    // height: 300,
-    // padding: 20,
-    // marginTop: 10,
   },
   formLabel: {
     fontSize: 30,
@@ -170,6 +162,5 @@ const styles = StyleSheet.create({
   },
   links: {
     flexDirection: "row",
-    // padding: 20,
   },
 });
