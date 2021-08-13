@@ -37,7 +37,6 @@ export default function RiderDash(props) {
   const renderItem = ({ item }) => <Item title={item.title} />;
 
   const addTrip = async () => {
-    console.log("user id", context.user._id);
     const api = "https://brsmith-auth-api.herokuapp.com/api/v1/trips";
     await axios({
       method: "post",
@@ -55,7 +54,6 @@ export default function RiderDash(props) {
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
-        console.log("this is the response", response.data);
         context.setTrip(response.data);
       })
       .catch((e) => {

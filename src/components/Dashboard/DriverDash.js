@@ -24,12 +24,10 @@ export default function DriverDash() {
       cache: "no-cache",
       headers: {},
     }).then((response) => {
-      console.log(response.data);
       if (response.status !== 500) {
         let openTrips = response.data.filter(
           (trip) => trip.accept_time === "null"
         );
-        console.log("___OpenTrips[0]____", openTrips[0]);
         setTrip(openTrips[0]);
       }
       if (response.status === 500) {
@@ -53,7 +51,6 @@ export default function DriverDash() {
       },
       headers: {},
     }).then((response) => {
-      console.log(response.data);
       if (response.status !== 500) {
         context.setTrip(response.data);
       }

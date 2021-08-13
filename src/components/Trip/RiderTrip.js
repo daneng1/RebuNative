@@ -19,7 +19,6 @@ export default function RiderTrip() {
     })
       .then((response) => {
         context.setTrip(response.data);
-        console.log("this is the response", response.data);
       })
       .catch((e) => console.error(e));
   };
@@ -31,7 +30,6 @@ export default function RiderTrip() {
     return () => clearInterval(updater);
   });
 
-  console.log("line 39", context.trip);
   const origin = context.trip.start_loc ? context.trip.start_loc : {};
   const destination = context.trip.end_loc ? context.trip.end_loc : {};
 

@@ -24,7 +24,6 @@ export default function DriverTrip() {
       headers: {},
     })
       .then((response) => {
-        console.log("____Response data____", response.data);
         if (response.status !== 500) {
           context.setTrip(response.data);
         }
@@ -49,7 +48,6 @@ export default function DriverTrip() {
       },
       headers: {},
     }).then((response) => {
-      console.log("____Response data____", response.data);
       if (response.status !== 500) {
         setComplete(true);
         context.setTrip(null);

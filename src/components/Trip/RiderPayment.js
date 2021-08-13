@@ -22,7 +22,6 @@ class RiderPayment extends Component {
   }
 
   handleOnChange = (form) => {
-    console.log(form);
     if (form.values.expiry.length === 5) {
       this.setState({
         number: form.values.number,
@@ -57,7 +56,6 @@ class RiderPayment extends Component {
     ]);
 
   handleSubmit = () => {
-    console.log(this.state);
     if (this.state.valid === true) {
       this.successAlert();
     }

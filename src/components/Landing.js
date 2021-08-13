@@ -25,14 +25,12 @@ export default function Landing() {
     context.setIsAuthenticated(false);
     context.setToken(null);
     context.setComplete(false);
-    console.log("logged out", context);
   };
 
   const newTrip = () => {
     context.setTrip(null);
     context.setOrigin(null);
     context.setDestination(null);
-    console.log("logged out", context);
     setRedirect(true);
   };
 
