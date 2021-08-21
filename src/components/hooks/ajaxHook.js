@@ -12,7 +12,6 @@ const routes = (action) => {
 
   const add = (data, callback) => {
     console.log('inside ajax', data);
-    // console.log(`inside addItem ${data.text}`, data.assignee, data.completed, data.difficulty);
     axios({
       method: 'post',
       url: api,
@@ -21,7 +20,6 @@ const routes = (action) => {
       headers: { 'Content-Type': 'application/json' },
       data: data,
     }).then(response => {
-      console.log('response data', response);
       const newUser = response.data;
       callback(newUser);
     }).catch(err => console.log(err))
