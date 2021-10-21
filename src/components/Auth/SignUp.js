@@ -18,21 +18,15 @@ export default function SignIn() {
   const [success, setSuccess] = useState(false);
 
   let handleUserName = (e, name) => {
-    console.log("this is the event", name);
     context.setUser({ ...context.user, username: e });
-    console.log(context.user);
   };
 
   let handlePassword = (e, name) => {
-    console.log("this is the event", name);
     context.setUser({ ...context.user, password: e });
-    console.log(context.user);
   };
 
   let handleRole = (e, name) => {
-    console.log("this is the event", name);
     context.setUser({ ...context.user, role: e });
-    console.log(context.user);
   };
 
   const handleSubmit = async () => {
@@ -48,7 +42,6 @@ export default function SignIn() {
       context.setToken(response.data.token);
 
       if (response.status === 201) {
-        console.log("response.data.user!!!!!!!", response.data.user);
         context.setUser(response.data.user);
         setSuccess(true);
         createTwoButtonAlert();
